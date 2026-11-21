@@ -1,20 +1,31 @@
-# Warhorse Roofing
+# War Horse Roofing, LLC
 
-A responsive, static starter for a service business that applies white roofing material with spray equipment. HTML, CSS, and plain JavaScript live in `dist/`. The files in that folder are the editable source and the deployable site.
+A four-page static website for Wade LeBeau’s commercial roof coating business in Fort Washakie, Wyoming. The editable and deployable files are in `dist/`. No build or package installation is required.
 
 ## Run locally
 
-Open `dist/index.html` directly, or use Python 3 from the repository root for an HTTP preview.
+From the repository root:
 
 ```sh
 python -m http.server 8000 --bind 127.0.0.1 --directory dist
 ```
 
-Visit <http://127.0.0.1:8000>.
+Open <http://127.0.0.1:8000>. For a file preview, open `dist/index.html` in a browser with JavaScript enabled.
 
-## Add the client's details
+## Pages
 
-- Edit `dist/site-config.js` for the business phone, estimate email, service area, and project gallery. Phone and email enable the corresponding call and email buttons. Email opens the visitor’s mail app.
-- Copy approved client photos into `dist/assets/` and add the file paths, descriptions, and optional captions to `projects`. The gallery and its navigation link appear with the first valid entry.
-- Edit `dist/index.html` for the service description and estimate guide. Confirm the product, compatible roof surfaces, and any performance or warranty language with the client before adding those details.
-- Edit `dist/styles.css` for colors, spacing, typography, and responsive layouts. The W mark and generated spray illustration are starter artwork. Replace them with approved branding and job photography when available.
+| URL | Source | Purpose |
+| --- | --- | --- |
+| `/` | `dist/index.html` | Commercial coatings in Wyoming and ways to reach Wade |
+| `/services/` | `dist/services/index.html` | Spray application, roof suitability, and scheduling questions |
+| `/about/` | `dist/about/index.html` | Wade’s background, Fort Washakie, and statewide coverage |
+| `/contact/` | `dist/contact/index.html` | Free estimates by phone or email directly to Wade |
+
+## Content and maintenance
+
+- Wade is the owner and main contact. Joey Waller and his crew appear briefly as regional partners on About.
+- The contact page contains working phone and email links in plain HTML. When those details change, update both `dist/contact/index.html` and `dist/site-config.js`. For changes to the service area, update the static page footers and the configuration. Each page contains the main navigation so visitors can use the site without JavaScript.
+- Optional project gallery entries in `dist/site-config.js` take an `image` path relative to the homepage, descriptive `alt` text, and an optional `caption`. The gallery appears when at least one valid entry exists.
+- The homepage uses the supplied branded-crew photo. The Services page keeps three photos of a single roof in one manual or play-on-demand sequence. All three are readable without JavaScript. About carries two separate crew photos, including a wide crop of the original that removes the photographer’s shadow. Additional batches can be added as their own jobs when their details are known.
+- The official logo and Wade’s profile photo come from the company’s previous website. The company’s [home](https://www.warhorseroofingllc.com/), [services](https://www.warhorseroofingllc.com/services), and [about](https://www.warhorseroofingllc.com/about) pages are the source for its business details.
+- The hosting project is recorded in `.openai/hosting.json` and serves `dist/`. Use the same source commit for GitHub and the hosted version when publishing.

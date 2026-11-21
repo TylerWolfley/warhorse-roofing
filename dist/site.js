@@ -1,50 +1,53 @@
 const config = window.warhorse || {};
-const actions = document.querySelector("[data-contact-actions]");
+const phone = document.querySelector("[data-phone]");
+const email = document.querySelector("[data-email]");
+const serviceArea = document.querySelector("[data-service-area]");
 
-function addContactLink(label, href) {
-  const link = document.createElement("a");
-  link.className = "button light";
-  link.href = href;
-  link.textContent = label;
-  actions.append(link);
+if (phone && config.phone) {
+  const digits = config.phone.replace(/[^0-9+]/g, "");
+  if (digits) {
+    phone.href = "tel:" + (/^\d{10}$/.test(digits) ? "+1" + digits : digits);
+    phone.textContent = config.phone;
+  }
 }
-
-if (config.phone) {
-  const dialable = config.phone.replace(/[^0-9+]/g, "");
-  if (dialable) addContactLink("Call " + config.phone, "tel:" + dialable);
+if (email && config.email) {
+  email.href = "mailto:" + config.email;
+  email.textContent = config.email;
 }
-if (config.email) {
-  addContactLink("Email for an estimate", "mailto:" + config.email + "?subject=Roofing%20estimate");
-}
-if (actions.childElementCount) {
-  actions.hidden = false;
-  document.querySelector("[data-contact-copy]").textContent =
-    "Tell Warhorse Roofing where the property is and what area you’d like sprayed.";
-  document.querySelector(".nav-cta").textContent = "Get an estimate";
-}
-if (config.serviceArea) {
-  const area = document.querySelector("[data-service-area]");
-  area.textContent = "Serving " + config.serviceArea + ".";
-  area.hidden = false;
+if (serviceArea && config.serviceArea) {
+  serviceArea.textContent = "Serving " + config.serviceArea;
 }
 
 const gallery = document.querySelector("[data-gallery]");
-for (const project of config.projects || []) {
-  if (!project.image || !project.alt) continue;
-  const figure = document.createElement("figure");
-  const photo = document.createElement("img");
-  photo.src = project.image;
-  photo.alt = project.alt;
-  photo.loading = "lazy";
-  figure.append(photo);
-  if (project.caption) {
-    const caption = document.createElement("figcaption");
-    caption.textContent = project.caption;
-    figure.append(caption);
+if (gallery) {
+  for (const project of config.projects || []) {
+    if (!project.image || !project.alt) continue;
+    const figure = document.createElement("figure");
+    const photo = document.createElement("img");
+    photo.src = project.image;
+    photo.alt = project.alt;
+    photo.loading = "lazy";
+    figure.append(photo);
+    if (project.caption) {
+      const caption = document.createElement("figcaption");
+      caption.textContent = project.caption;
+      figure.append(caption);
+    }
+    gallery.append(figure);
   }
-  gallery.append(figure);
+  if (gallery.childElementCount) {
+    document.querySelector("#projects").hidden = false;
+    document.querySelector("[data-gallery-link]").hidden = false;
+  }
 }
-if (gallery.childElementCount) {
-  document.querySelector("#projects").hidden = false;
-  document.querySelector("[data-gallery-link]").hidden = false;
+
+// A local file preview needs the index filename. Published directory URLs do not.
+if (location.protocol === "file:") {
+  for (const link of document.querySelectorAll("a[href]")) {
+    const target = new URL(link.href);
+    if (target.protocol === "file:" && target.pathname.endsWith("/")) {
+      target.pathname += "index.html";
+      link.href = target.href;
+    }
+  }
 }

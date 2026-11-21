@@ -1,8 +1,8 @@
-// Add client-approved details here. Leave unknown values empty.
+// Keep the static contact details in contact/index.html in sync for visitors without JavaScript.
 window.warhorse = {
-  phone: "",
-  email: "",
-  serviceArea: "",
-  // Example entry: { image: "./assets/job.jpg", alt: "Description of the roof", caption: "Project name and town" }
+  phone: "307-438-1030",
+  email: "wade.lebeau@warhorse-roofing.com",
+  serviceArea: "Wyoming from Fort Washakie",
+  // Paths for project photos are relative to the homepage.
   projects: []
 };

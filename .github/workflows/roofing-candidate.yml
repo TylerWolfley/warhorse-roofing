@@ -1,0 +1,105 @@
+name: Candidate roofing site checks
+on:
+  push:
+    branches:
+      - qa/wrr-layout-20261122
+permissions: {}
+jobs:
+  browser:
+    name: Desktop and mobile site checks
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install Playwright for local Chrome
+        shell: bash
+        run: |
+          npm install --prefix "$RUNNER_TEMP/roofing-browser" --no-audit --no-fund --ignore-scripts playwright@1.55.0
+      - name: Check the nine pages in Chrome
+        shell: bash
+        run: |
+          export QA_BROWSER_MODULE="$RUNNER_TEMP/roofing-browser/node_modules/playwright"
+          export QA_CHROME="$(command -v google-chrome || command -v google-chrome-stable)"
+          export QA_DIST="$GITHUB_WORKSPACE/dist"
+          node qa/qa.cjs
+      - name: Save homepage screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: roofing-homepage-screenshots
+          path: qa/qa-home-*.jpg
+          retention-days: 1
+          if-no-files-found: ignore
+  photograph:
+    name: Prepare the roof crew photograph
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Read the photograph from the previous Pages release
+        shell: bash
+        run: |
+          git show 'f71179517f29e8643603bc913e0a263d1c2e28df:assets/crew-metal-roof.webp' > "$RUNNER_TEMP/crew-original.webp"
+          python3 -c 'from PIL import Image' || python3 -m pip install --disable-pip-version-check Pillow==11.3.0
+      - name: Crop the source image
+        id: image
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from PIL import Image
+          import hashlib
+          import os
+          directory = Path(os.environ['RUNNER_TEMP'])
+          source = directory / 'crew-original.webp'
+          output = directory / 'crew-detail.webp'
+          with Image.open(source) as photo:
+              if photo.size != (1500, 1125):
+                  raise ValueError('Unexpected image dimensions')
+              cropped = photo.convert('RGB').crop((220, 110, 1350, 1010))
+              cropped.save(output, 'WEBP', quality=85, method=6, exif=b'')
+          data = output.read_bytes()
+          expected = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+          with open(os.environ['GITHUB_OUTPUT'], 'a') as stream:
+              print('sha=' + expected, file=stream)
+          PY
+      - name: Save cropped image for review
+        uses: actions/upload-artifact@v4
+        with:
+          name: crew-detail-${{ steps.image.outputs.sha }}
+          path: ${{ runner.temp }}/crew-detail.webp
+          if-no-files-found: error
+          retention-days: 1
+      - name: Store the cropped photograph as an unreferenced Git blob
+        shell: bash
+        env:
+          EXPECTED_SHA: ${{ steps.image.outputs.sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          import base64
+          import json
+          import os
+          source = Path(os.environ['RUNNER_TEMP']) / 'crew-detail.webp'
+          payload = json.dumps({'encoding': 'base64', 'content': base64.b64encode(source.read_bytes()).decode()}).encode()
+          api = os.environ['GITHUB_API_URL'] + '/repos/' + os.environ['GITHUB_REPOSITORY'] + '/git/blobs'
+          request = Request(api, data=payload, method='POST', headers={'Authorization': 'Bearer ' + os.environ['GH_TOKEN'], 'Content-Type': 'application/json', 'Accept': 'application/vnd.github+json', 'X-GitHub-Api-Version': '2022-11-28'})
+          with urlopen(request, timeout=25) as response:
+              actual = json.load(response)['sha']
+          if actual != os.environ['EXPECTED_SHA']:
+              raise ValueError('Blob verification failed')
+          print(actual)
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as stream:
+              print(actual, file=stream)
+          PY

@@ -53,3 +53,25 @@ if (location.protocol === "file:") {
     }
   }
 }
+
+// The static navigation remains available when scripting is disabled.
+const menuToggle = document.getElementById("menu-toggle");
+const mainNav = document.getElementById("primary-nav");
+if (menuToggle && mainNav) {
+  const smallScreen = window.matchMedia("(max-width: 720px)");
+  function setMenu(open) {
+    mainNav.classList.toggle("open", open);
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.querySelector(".menu-label").textContent = open ? "Close menu" : "Menu";
+  }
+  menuToggle.addEventListener("click", () => setMenu(menuToggle.getAttribute("aria-expanded") !== "true"));
+  document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && mainNav.classList.contains("open")) {
+      setMenu(false);
+      menuToggle.focus();
+    }
+  });
+  mainNav.addEventListener("click", event => { if (event.target.closest("a")) setMenu(false); });
+  smallScreen.addEventListener("change", () => setMenu(false));
+  document.documentElement.classList.add("nav-ready");
+}

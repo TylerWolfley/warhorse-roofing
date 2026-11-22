@@ -1,0 +1,67 @@
+.territory-intro {
+  display: grid;
+  grid-template-columns: minmax(0,.95fr) minmax(0,1.05fr);
+  align-items: center;
+  gap: clamp(2.5rem,6vw,6rem);
+  padding-block: clamp(2.8rem,6vw,5.5rem);
+}
+.territory-copy h1 { max-width: 13ch; font-size: clamp(3.2rem,6.8vw,6.2rem); }
+.territory-copy .lead { margin: 1.3rem 0 .9rem; }
+.territory-copy .actions { margin-top: 1.2rem; }
+.territory-map {
+  border: 1px solid var(--line);
+  background: #fbfaf6;
+  min-width: 0;
+}
+.map-sheet { position: relative; margin: clamp(.4rem,1.3vw,1.25rem); }
+.map-sheet img { width: 100%; height: auto; }
+.map-link {
+  position: absolute;
+  height: max(8.8%, 44px);
+  min-width: 44px;
+  transform: translateY(-50%);
+  border-radius: 4px;
+}
+.map-link:hover { background: rgba(151,42,54,.07); }
+.map-link:focus-visible { outline-offset: 1px; }
+.pin-jackson { left: 4.7%; top: 39.6%; width: 22%; }
+.pin-riverton { left: 36.3%; top: 49.3%; width: 22%; }
+.pin-rock-springs { left: 25.5%; top: 82.1%; width: 33%; }
+.map-key {
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .4rem 1.5rem;
+  padding: .8rem clamp(.7rem,1.5vw,1.35rem);
+  font-size: .88rem;
+  color: var(--ink);
+}
+.map-key span { display: inline-flex; gap: .5rem; align-items: center; }
+.map-key span::before { flex-shrink: 0; content: ""; }
+.key-county::before { width: .88rem; height: .77rem; background: #eed0d0; border: 1px solid #982f3b; }
+.key-job::before { width: .66rem; height: .66rem; background: #842231; border-radius: 50%; }
+.territory-work { border-block: 1px solid var(--line); background: var(--pale); }
+.work-places {
+  display: grid;
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  gap: clamp(1.2rem,4vw,4.5rem);
+  margin-top: clamp(1.4rem,3vw,2.45rem);
+}
+.work-places article { display: flex; flex-direction: column; align-items: flex-start; padding-top: 1rem; border-top: 2px solid var(--ink); }
+.work-places p { margin: .6rem 0; }
+.work-places .text-link { margin-top: auto; }
+.territory-travel { display: grid; grid-template-columns: .9fr 1.1fr; gap: clamp(2rem,6vw,6rem); }
+.territory-travel .actions { margin-top: .45rem; }
+@media (max-width: 780px) {
+  .territory-intro, .territory-travel { grid-template-columns: minmax(0,1fr); gap: 1.6rem; }
+  .territory-copy h1 { max-width: 18ch; }
+  .territory-map { width: min(100%,37rem); }
+  .work-places { gap: 1.2rem; }
+}
+@media (max-width: 610px) {
+  .territory-intro { padding-top: 2.3rem; }
+  .work-places { grid-template-columns: 1fr; }
+  .map-key { gap: .3rem .85rem; font-size: .84rem; }
+  .territory-travel { gap: 1rem; }
+}

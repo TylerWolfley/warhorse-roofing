@@ -10,8 +10,11 @@
   <link rel="icon" href="../../assets/war-horse-roofing-logo.png" type="image/png">
   <link rel="preload" href="../../assets/fonts/barlow-condensed-semibold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/editorial.css">
+  <link rel="stylesheet" href="../../assets/casework.css">
   <script src="../../site-config.js" defer></script>
   <script src="../../site.js" defer></script>
+  <script src="../../photo-viewer.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -31,24 +34,22 @@
       </div>
     </div>
   </header>
-  <main id="main">
-      <header class="wrap page-intro">
-        <a class="back-link" href="../../projects/">Project gallery</a>
-        <p class="kicker">Rexburg, Idaho <span class="separator">/</span> October 2026</p>
-        <h1>School roof coating</h1>
-        <p class="lead">Our crew applied a white coating to this school roof in Rexburg. The photos show our progress over the course of the workday.</p>
-      </header>
-      <section class="wrap photo-essay" aria-label="Morning and afternoon on the school roof">
-        <figure>
-          <a href="../../assets/crew-coating-edge.webp"><img src="../../assets/crew-coating-edge.webp" width="1150" height="504" alt="Three roofers work along the edge of the fresh white coating." fetchpriority="high"></a>
-          <figcaption><strong>11:24 a.m.</strong> One of us sprays while two others keep the hose clear of the fresh pass.</figcaption>
-        </figure>
-        <figure>
-          <a href="../../assets/crew-across-roof.webp"><img src="../../assets/crew-across-roof.webp" width="1040" height="780" alt="White-coated roof in the afternoon with the crew and rooftop equipment at the far end." loading="lazy"></a>
-          <figcaption><strong>3:21 p.m.</strong> The foreground is coated. We’re working around equipment at the far side of the roof.</figcaption>
-        </figure>
-      </section>
-</main>
+  <main id="main" class="cw cw-report">
+    <header class="wrap cw-report-head">
+      <a class="cw-back" href="../../projects/">Project gallery</a>
+      <div class="cw-report-heading"><div><p class="cw-meta">Rexburg, Idaho <span aria-hidden="true">/</span> October 2026</p><h1>School roof coating</h1></div><p class="cw-intro">Three of us worked across this school roof with a spray wand and hose. These two photographs show where we were in the morning and where the work stood that afternoon.</p></div>
+    </header>
+    <section class="wrap cw-time-report" aria-label="Coating progress during the workday">
+      <figure class="cw-entry">
+        <figcaption><time datetime="11:24">11:24 <small>a.m.</small></time><h2>Along the spray line</h2><p>One of us sprayed along the edge of the dark roofing while two others handled the hose, keeping it clear of the wet finish.</p></figcaption>
+        <a href="../../assets/crew-coating-edge.webp"><img src="../../assets/crew-coating-edge.webp" width="1150" height="504" alt="Three crew members at the boundary between the white finish and the dark roof." fetchpriority="high"></a>
+      </figure>
+      <figure class="cw-entry">
+        <figcaption><time datetime="15:21">3:21 <small>p.m.</small></time><h2>At the equipment</h2><p>By afternoon the white surface extended across the foreground. Our crew was working near the rooftop equipment at the far side.</p></figcaption>
+        <a href="../../assets/crew-across-roof.webp"><img src="../../assets/crew-across-roof.webp" width="1040" height="780" alt="Afternoon view across the coated school roof toward the crew beside the equipment." loading="lazy"></a>
+      </figure>
+    </section>
+  </main>
 
   <footer class="brand-footer" id="estimate">
     <div class="wrap footer-inner"><a class="footer-name" href="../../">Warhorse Roofing</a><p>Fremont County, Wyoming</p><a class="footer-contact" href="../../contact/">Contact</a></div>

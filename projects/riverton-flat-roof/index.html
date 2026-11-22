@@ -10,8 +10,11 @@
   <link rel="icon" href="../../assets/war-horse-roofing-logo.png" type="image/png">
   <link rel="preload" href="../../assets/fonts/barlow-condensed-semibold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../../assets/editorial.css">
+  <link rel="stylesheet" href="../../assets/casework.css">
   <script src="../../site-config.js" defer></script>
   <script src="../../site.js" defer></script>
+  <script src="../../photo-viewer.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -31,38 +34,25 @@
       </div>
     </div>
   </header>
-  <main id="main">
-      <header class="wrap page-intro">
-        <a class="back-link" href="../../projects/">Project gallery</a>
-        <p class="kicker">Riverton, Wyoming <span class="separator">/</span> May 2025</p>
-        <h1>Flat roof restoration in Riverton</h1>
-        <p class="lead">The finish on this Riverton roof had worn through around the rooftop unit and vent pipe. We coated the roof surface, the raised equipment base, and the low walls.</p>
-      </header>
-      <section class="wrap case-pair" aria-label="Roof before and after coating">
-        <div class="proof-pair">
-          <figure>
-            <a href="../../assets/roof-before-detail.webp"><img src="../../assets/roof-before-detail.webp" width="980" height="546" alt="Weathered roof surface and rooftop unit before coating." loading="lazy"></a>
-            <figcaption><strong>Before</strong> Worn finish beside the rooftop unit.</figcaption>
-          </figure>
-          <figure>
-            <a href="../../assets/roof-after-detail.webp"><img src="../../assets/roof-after-detail.webp" width="815" height="498" alt="Finished white surface around the rooftop unit and at the walls." loading="lazy"></a>
-            <figcaption><strong>After</strong> The new coating around the same unit.</figcaption>
-          </figure>
-        </div>
-      </section>
-      <section class="paper">
-        <div class="wrap section detail-feature">
-          <figure>
-            <a href="../../assets/roof-preparation-detail.webp"><img src="../../assets/roof-preparation-detail.webp" width="1025" height="476" alt="Light coating partway across the roof, beside a strip of darker roofing." loading="lazy"></a>
-            <figcaption>Coating in progress</figcaption>
-          </figure>
-          <div>
-            <h2>Earlier repairs</h2>
-            <p>Midway through the job, the fresh coating covered the center of the roof. The dark strip on the right shows where the roof had been patched before.</p>
-          </div>
-        </div>
-      </section>
-</main>
+  <main id="main" class="cw cw-report">
+    <header class="wrap cw-report-head">
+      <a class="cw-back" href="../../projects/">Project gallery</a>
+      <div class="cw-report-heading"><div><p class="cw-meta">Riverton, Wyoming <span aria-hidden="true">/</span> May 2025</p><h1>Flat roof restoration</h1></div><p class="cw-intro">The finish had worn away around a rooftop unit and vent pipe. We carried the new coating across the roof and up the raised base of the unit.</p></div>
+    </header>
+    <section class="cw-riverton" aria-labelledby="curb-detail">
+      <div class="wrap cw-field-pair">
+        <figure class="cw-large-view"><a href="../../assets/roof-after-detail.webp"><img src="../../assets/roof-after-detail.webp" width="815" height="498" fetchpriority="high" alt="Finished white roof in Riverton with the rooftop unit, vent pipe, and low perimeter walls."></a></figure>
+        <div class="cw-field-note"><p class="cw-meta">Finished roof</p><h2 id="curb-detail">The equipment curb</h2><p>The curb raises the unit above the roof. In the finished photo you can follow the white coating across the flat surface, up the curb, and around its corners.</p><a class="cw-link" href="../../assets/roof-after-detail.webp">Open finished roof photo</a></div>
+      </div>
+    </section>
+    <section class="wrap cw-section" aria-labelledby="prior-surface">
+      <div class="cw-section-head"><h2 id="prior-surface">The surface underneath</h2><p>These two views show the same job before the finished surface concealed the wear and older patches.</p></div>
+      <div class="cw-evidence">
+        <figure><a href="../../assets/roof-before-detail.webp"><img src="../../assets/roof-before-detail.webp" width="980" height="546" alt="Mottled gray roofing and rust-colored marks at the unit before coating." loading="lazy"></a><figcaption><strong>Worn finish</strong><span>The old surface was exposed in patches between the unit and the vent pipe.</span></figcaption></figure>
+        <figure><a href="../../assets/roof-preparation-detail.webp"><img src="../../assets/roof-preparation-detail.webp" width="1025" height="476" alt="Light coating beside a strip of dark roofing with several small, light-colored patches." loading="lazy"></a><figcaption><strong>Earlier repairs</strong><span>As we worked across the roof, older patches were still visible along the right edge of the new coating.</span></figcaption></figure>
+      </div>
+    </section>
+  </main>
 
   <footer class="brand-footer" id="estimate">
     <div class="wrap footer-inner"><a class="footer-name" href="../../">Warhorse Roofing</a><p>Fremont County, Wyoming</p><a class="footer-contact" href="../../contact/">Contact</a></div>

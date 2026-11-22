@@ -10,8 +10,10 @@
   <link rel="icon" href="../assets/war-horse-roofing-logo.png" type="image/png">
   <link rel="preload" href="../assets/fonts/barlow-condensed-semibold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../assets/editorial.css">
   <script src="../site-config.js" defer></script>
   <script src="../site.js" defer></script>
+  <script src="../photo-viewer.js" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -31,37 +33,16 @@
       </div>
     </div>
   </header>
-  <main id="main">
-      <section class="wrap owner-intro">
-        <div class="owner-copy">
-          <h1>Warhorse Roofing</h1>
-          <p class="lead">We’re a veteran-owned commercial roofing company based in Fremont County, Wyoming. We restore metal and low-slope roofs.</p>
-          <p>Our founder spent decades in construction and roofing before starting the company. He wants to help other veterans start businesses of their own.</p>
-          <div class="actions"><a class="btn" href="tel:+13074381030">Call</a><a class="text-link" href="../contact/">Request a quote</a></div>
-        </div>
-        <figure class="owner-photo">
-          <img src="../assets/wade-lebeau.webp" alt="Flag bearers at an outdoor gathering." width="720" height="943">
-        </figure>
-      </section>
-      <section class="wash">
-        <div class="wrap crew-gallery" aria-labelledby="crew-title">
-          <div class="crew-intro">
-            <h2 id="crew-title">Our coating crew</h2>
-            <a class="text-link" href="../projects/school-roof-coating/">Rexburg school project</a>
-          </div>
-          <div class="crew-pair">
-            <figure>
-              <img src="../assets/crew-coating-edge.webp" alt="Three crew members work along the line between the dark roof surface and the newly sprayed white coating." width="1150" height="504" loading="lazy">
-              <figcaption>Our crew spraying a school roof in Rexburg, Idaho.</figcaption>
-            </figure>
-            <figure>
-              <img src="../assets/crew-across-roof.webp" alt="Roofers handle the hose and spray wand across a wide white roof under a clear sky." width="1040" height="780" loading="lazy">
-              <figcaption>Later that afternoon, we reached the equipment at the far end.</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-    </main>
+  <main id="main" class="company-page">
+  <section class="company-opening wrap">
+    <div class="company-intro"><p class="folio-label">Our company</p><h1>Warhorse <em>Roofing.</em></h1><p class="company-deck">Veteran-owned commercial roofing from Fremont County, Wyoming.</p><p>Our founder spent decades in construction and roofing before starting Warhorse. He also wants to help other veterans start businesses of their own.</p><a class="editor-link" href="../service-area/">Where we work</a></div>
+    <figure class="company-portrait"><img src="../assets/wade-lebeau.webp" width="720" height="943" alt="Flag bearers at an outdoor gathering."></figure>
+  </section>
+  <section class="crew-story"><div class="wrap">
+    <div class="spread-intro"><div><p class="folio-label">Rexburg, Idaho</p><h2>The crew <em>at work.</em></h2></div><div class="spread-summary"><p>On this school roof one person sprayed while the rest of the crew managed the hose, keeping it clear of the fresh coating.</p><a class="editor-link" href="../projects/school-roof-coating/">See the workday in Rexburg</a></div></div>
+    <figure data-photo-set="Rexburg school"><a href="../assets/crew-coating-edge.webp" data-view-photo><img src="../assets/crew-coating-edge.webp" width="1150" height="504" alt="Three roofers advancing along the edge of a fresh coating pass in Rexburg." loading="lazy"></a><figcaption>Morning application, October 2026</figcaption></figure>
+  </div></section>
+</main>
 
   <footer class="brand-footer" id="estimate">
     <div class="wrap footer-inner"><a class="footer-name" href="../">Warhorse Roofing</a><p>Fremont County, Wyoming</p><a class="footer-contact" href="../contact/">Contact</a></div>

@@ -10,6 +10,8 @@
   <link rel="icon" href="../assets/war-horse-roofing-logo.png" type="image/png">
   <link rel="preload" href="../assets/fonts/barlow-condensed-semibold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="stylesheet" href="../styles.css">
+  <link rel="stylesheet" href="../assets/editorial.css">
+  <link rel="stylesheet" href="../contact.css">
   <script src="../site-config.js" defer></script>
   <script src="../site.js" defer></script>
   <script src="../estimate.js" defer></script>
@@ -32,63 +34,22 @@
       </div>
     </div>
   </header>
-  <main id="main">
-  <section class="wrap assessment-layout">
-    <div class="assessment-intro">
-      <h1>Commercial roofing quotes</h1>
-      <p class="lead">Tell us where the building is and what needs attention. If the same leak keeps coming back, include where it shows up and what repairs you’ve already tried.</p>
-      <div class="quote-contact">
-        <a href="tel:+13074381030" class="text-link" aria-label="Call Warhorse Roofing at 307-438-1030">Call</a>
-        <span>307-438-1030</span>
-        <a href="mailto:wade.lebeau@warhorse-roofing.com" class="text-link" id="company-email">Email us</a>
-      </div>
-    </div>
-    <section class="assessment-panel" aria-labelledby="details-title">
-      <h2 id="details-title">Tell us about your roof</h2>
-      <div id="online-quote">
-        <p>Use our online form to request a free quote for your building.</p>
-        <a class="btn" href="https://www.warhorseroofingllc.com/contact">Request a quote</a>
-      </div>
-      <details class="quote-alternate" id="email-option" hidden>
-        <summary>Prefer to send an email?</summary>
-        <p id="quote-help">Fill in the details below, then send the draft from your email app. You can attach photos there.</p>
-        <form class="estimate-form" id="estimate-request" aria-label="Roofing quote request" aria-describedby="quote-help">
-          <div class="assessment-field">
-            <label for="estimate-location">Building address or town</label>
-            <input name="location" id="estimate-location" maxlength="180" autocomplete="off" required>
-          </div>
-          <div class="assessment-field">
-            <label for="estimate-concern">What needs attention?</label>
-            <textarea name="message" id="estimate-concern" rows="4" maxlength="900" required></textarea>
-          </div>
-          <div class="assessment-contact-fields">
-            <div class="assessment-field">
-              <label for="estimate-name">Your name</label>
-              <input name="name" id="estimate-name" maxlength="100" autocomplete="name" required>
-            </div>
-            <div class="assessment-field">
-              <label for="estimate-contact">Phone or email</label>
-              <input name="contact" id="estimate-contact" maxlength="160" required>
-            </div>
-          </div>
-          <div class="assessment-actions">
-            <button class="btn" id="quote-submit" type="submit">Open email draft</button>
-            <button class="assessment-link" id="copy-request" type="button">Copy request</button>
-          </div>
-          <p id="estimate-status" role="status" aria-atomic="true"></p>
-          <a id="quote-email-fallback" class="text-link" href="mailto:wade.lebeau@warhorse-roofing.com" hidden>Open email draft</a>
-          <textarea readonly id="copy-fallback" rows="6" aria-label="Request to copy" hidden></textarea>
-        </form>
-      </details>
-    </section>
+  <main id="main" class="quote-page"><div class="wrap quote-layout">
+  <section aria-labelledby="details-title"><p class="folio-label">Warhorse Roofing</p><h1 id="details-title">Request a quote</h1>
+    <p id="quote-help">Tell us about the building and what needs attention. We’ll put your details into an email draft you can review, add photos to, and send.</p>
+    <form id="estimate-request" action="mailto:wade.lebeau@warhorse-roofing.com?subject=Commercial%20roofing%20quote" method="post" enctype="text/plain" aria-labelledby="details-title">
+      <label for="estimate-location">Building address or town</label><input id="estimate-location" name="location" required maxlength="180" autocomplete="off">
+      <label for="estimate-concern">What’s happening on the roof?</label><textarea id="estimate-concern" name="message" rows="4" maxlength="900" required></textarea>
+      <div class="quote-pair"><div><label for="estimate-name">Your name</label><input id="estimate-name" name="name" autocomplete="name" maxlength="100" required></div><div><label for="estimate-contact">Phone or email</label><input id="estimate-contact" name="contact" maxlength="160" required></div></div>
+      <div class="actions"><button class="btn" id="quote-submit" type="submit">Open email draft</button><button type="button" class="quote-copy" id="copy-request" hidden>Copy request</button></div>
+      <p id="estimate-status" aria-live="polite" role="status"></p><a id="quote-email-fallback" hidden>Open this draft in email</a><textarea readonly id="copy-fallback" aria-label="Quote request to copy" rows="6" hidden></textarea>
+    </form>
   </section>
-  <section class="tint" id="site-visit">
-    <div class="wrap assessment-next">
-      <h2>Before we visit</h2>
-      <p>Let us know who can provide roof access and which entrances or loading bays need to stay open. Photos of interior water damage and records of past repairs can help us narrow down where to look.</p>
-    </div>
-  </section>
-</main>
+  <aside id="site-visit"><p class="folio-label">Contact Warhorse</p><a class="quote-number" href="tel:+13074381030">307-438-1030</a><p>Based in Fremont County, Wyoming.</p><a class="editor-link" id="company-email" href="mailto:wade.lebeau@warhorse-roofing.com">Email us</a>
+    <div class="quote-aside"><h2>Roof access</h2><p>When arranging a visit, tell us who can provide access and which entrances or loading bays need to stay open.</p></div>
+    <a class="editor-link" href="https://www.warhorseroofingllc.com/contact">Use our existing online form</a>
+  </aside>
+</div></main>
 
   <footer class="brand-footer" id="estimate">
     <div class="wrap footer-inner"><a class="footer-name" href="../">Warhorse Roofing</a><p>Fremont County, Wyoming</p><a class="footer-contact" href="../contact/">Contact</a></div>

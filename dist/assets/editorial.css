@@ -30,7 +30,7 @@
 .editor-link { text-decoration-color:var(--accent); }
 .editor-link:hover,.inverse-link:hover,.cover-link:hover { text-decoration-thickness:2px; }
 .cover { position:relative; isolation:isolate; display:flex; align-items:center; min-height:clamp(31rem,42vw,46rem); color:#1f2420; background:#e3e5df; overflow:hidden; }
-.cover-image { position:absolute; z-index:-3; inset:0 0 0 auto; width:82%; height:100%; max-width:none; object-fit:cover; object-position:60% 27%; }
+.cover-image { position:absolute; z-index:-3; inset:0 0 0 auto; width:82%; height:100%; max-width:none; object-fit:cover; object-position:60% 0%; }
 .cover::before { content:""; position:absolute; z-index:-2; inset:0; pointer-events:none; background:linear-gradient(90deg,#e3e5df 0%,rgba(227,229,223,.98) 18%,rgba(227,229,223,.87) 28%,rgba(229,230,225,.52) 43%,rgba(230,231,226,0) 61%); }
 .cover-content { padding-block:clamp(3.2rem,6vw,6.3rem); }
 .cover-brand { display:flex; align-items:center; gap:.75rem; color:#363b34; }

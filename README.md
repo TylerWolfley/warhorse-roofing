@@ -1,6 +1,6 @@
 # War Horse Roofing, LLC
 
-A four-page static website for Wade LeBeau’s commercial roof coating business in Fort Washakie, Wyoming. The editable and deployable files are in `dist/`. No build or package installation is required.
+A four-page static website for Wade LeBeau’s commercial roof coating business in Fremont County, Wyoming. The editable and deployable files are in `dist/`. No build or package installation is required.
 
 ## Run locally
 
@@ -18,7 +18,7 @@ Open <http://127.0.0.1:8000>. For a file preview, open `dist/index.html` in a br
 | --- | --- | --- |
 | `/` | `dist/index.html` | Commercial coatings in Wyoming and ways to reach Wade |
 | `/services/` | `dist/services/index.html` | Spray application, roof suitability, and scheduling questions |
-| `/about/` | `dist/about/index.html` | Wade’s background, Fort Washakie, and statewide coverage |
+| `/about/` | `dist/about/index.html` | Wade’s background, Fremont County, and statewide coverage |
 | `/contact/` | `dist/contact/index.html` | Free estimates by phone or email directly to Wade |
 
 ## Content and maintenance

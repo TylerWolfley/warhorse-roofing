@@ -1,0 +1,153 @@
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("fonts/instrument-serif-italic.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+:root {
+  --paper:#faf9f5;
+  --pale:#ecece6;
+  --ink:#242522;
+  --muted:#52544d;
+  --accent:#9b2336;
+  --serif:"Instrument Serif",Georgia,serif;
+}
+.header-inner { min-height:5.05rem; }
+.brand { width:7.7rem; }
+.primary-nav a { position:relative; }
+.primary-nav a[aria-current] { box-shadow:none; }
+.primary-nav a[aria-current]::after { content:""; height:2px; background:var(--accent); position:absolute; left:0; right:0; bottom:.25rem; }
+.btn { border-radius:.15rem; }
+.call-link { text-decoration:none; }
+.call-link::before { content:""; display:block; width:1rem; height:1rem; margin-right:.45rem; background:currentColor; mask:url("phone.svg") center/contain no-repeat; }
+.back-link::before { content:none; }
+.folio-label,.cover-brand,.cover-caption,.photo-tab,.jackson-report-pair figcaption>span { font-size:.78rem; line-height:1.5; font-weight:700; text-transform:uppercase; letter-spacing:.09em; }
+.folio-label { color:var(--accent); display:flex; flex-wrap:wrap; align-items:center; gap:.3rem .85rem; margin-bottom:.8rem; }
+.folio-label span { color:var(--muted); font-weight:550; letter-spacing:.05em; border-left:1px solid var(--line); padding-left:.85rem; }
+.edition-home em,.company-page em,.portfolio-index em,.jackson-report em { font:italic 400 1.04em/.99 var(--serif); letter-spacing:-.035em; }
+.editor-link,.inverse-link,.cover-link { display:inline-flex; align-items:center; min-height:44px; text-decoration:underline; text-underline-offset:.37em; text-decoration-thickness:1px; font-size:1rem; font-weight:650; }
+.editor-link { text-decoration-color:var(--accent); }
+.editor-link:hover,.inverse-link:hover,.cover-link:hover { text-decoration-thickness:2px; }
+.cover { position:relative; isolation:isolate; display:flex; align-items:center; min-height:clamp(31rem,42vw,46rem); color:#1f2420; background:#e3e5df; overflow:hidden; }
+.cover-image { position:absolute; z-index:-3; inset:0 0 0 auto; width:82%; height:100%; max-width:none; object-fit:cover; object-position:60% 27%; }
+.cover::before { content:""; position:absolute; z-index:-2; inset:0; pointer-events:none; background:linear-gradient(90deg,#e3e5df 0%,rgba(227,229,223,.98) 18%,rgba(227,229,223,.87) 28%,rgba(229,230,225,.52) 43%,rgba(230,231,226,0) 61%); }
+.cover-content { padding-block:clamp(3.2rem,6vw,6.3rem); }
+.cover-brand { display:flex; align-items:center; gap:.75rem; color:#363b34; }
+.cover-brand::before { content:""; height:3px; width:2rem; background:var(--accent); }
+.cover h1 { font-size:clamp(4.75rem,7.7vw,8.65rem); line-height:.88; letter-spacing:-.04em; margin:.26em 0 .29em; text-wrap:initial; max-width:none; }
+.cover h1 em { display:block; color:#682637; font-size:.87em; line-height:1.04; }
+.cover-link { color:#1f2420; text-decoration-color:#783d49; }
+.cover-caption { position:absolute; right:max(4%,calc((100% - 88rem)/2)); bottom:1.35rem; padding:.55rem .8rem; background:#222822e8; color:white; }
+.cover-caption span { display:block; font-size:.82rem; color:#e7e9e3; text-transform:none; letter-spacing:0; }
+.portfolio-lead,.field-plates { padding-block:clamp(3.2rem,6.5vw,6.8rem); }
+.spread-intro,.index-mast,.clinic-index>.wrap { display:grid; grid-template-columns:minmax(0,1.18fr) minmax(0,.65fr); align-items:end; gap:clamp(2rem,8vw,9rem); }
+.spread-intro { margin-bottom:clamp(1.4rem,3vw,3rem); }
+.spread-intro h2,.owner-guide h2,.home-jackson h2,.company-line h2,.clinic-index h2 { font-size:clamp(2.9rem,5vw,5.6rem); letter-spacing:-.025em; line-height:.95; }
+.spread-intro h2 em,.home-jackson h2 em,.owner-guide h2 em { display:block; }
+.spread-summary p,.jackson-note>p:not(.folio-label),.portfolio-copy>p:not(.folio-label),.index-mast>p,.company-intro>p:not(.folio-label),.report-mast>p:not(.folio-label) { font-size:clamp(1rem,1.3vw,1.2rem); }
+.spread-summary .editor-link,.jackson-note .editor-link,.portfolio-copy .editor-link,.company-intro .editor-link { margin-top:.4rem; }
+.photo-spread { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(.8rem,1.6vw,1.8rem); }
+.photo-spread figure>a,.index-stories figure>a,.crew-story figure>a,.portfolio-feature figure>a,.jackson-report-pair figure>a { display:block; position:relative; overflow:hidden; cursor:zoom-in; }
+.photo-spread img { width:100%; aspect-ratio:1.7; object-fit:cover; }
+.photo-tab { position:absolute; left:.9rem; top:.9rem; padding:.27rem .62rem; background:#282c27ef; color:#fff; }
+.photo-spread figcaption,.crew-story figcaption { margin-top:.65rem; font-size:.9rem; }
+.owner-guide,.clinic-index { color:var(--paper); background:#262a25; }
+.guide-grid { display:grid; grid-template-columns:1fr 1fr; align-items:center; gap:clamp(2rem,9vw,10rem); padding-block:clamp(3.2rem,5.6vw,6rem); }
+.owner-guide .folio-label,.clinic-index .folio-label { color:#e8acb5; }
+.owner-guide p:not(.folio-label),.clinic-index p:not(.folio-label) { color:#d5d9d0; }
+.guide-grid>div:first-child>p:not(.folio-label) { margin-top:1.2rem; max-width:40ch; }
+.inverse-link { color:white; text-decoration-color:#d78894; margin-top:.55rem; }
+.inverse-link:hover { color:#fff; }
+.system-index a { display:block; text-decoration:none; border-top:1px solid #71786a; padding-block:1.15rem; }
+.system-index h3 { color:#fafbf6; font-size:clamp(2rem,3vw,3.3rem); }
+.system-index a:hover h3 { text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:.1em; }
+.system-index p { margin-top:.25rem; max-width:46ch; }
+.system-index .warranty-jump { color:white; min-height:44px; font-size:.94rem; text-decoration:underline; text-underline-offset:.3em; }
+.home-jackson,.portfolio-feature { display:grid; grid-template-columns:1.1fr .9fr; align-items:center; }
+.home-jackson { gap:clamp(2rem,7vw,7rem); padding-block:clamp(3rem,6vw,6.4rem); }
+.jackson-photo { display:block; }
+.jackson-photo img { width:100%; height:clamp(22rem,32vw,35rem); object-fit:cover; object-position:50% 45%; }
+.jackson-note>p:not(.folio-label),.portfolio-copy>p:not(.folio-label) { margin-top:1.15rem; max-width:39ch; }
+.company-line { background:var(--pale); border-top:1px solid var(--line); }
+.company-line>.wrap { display:flex; justify-content:space-between; align-items:center; gap:1.5rem; padding-block:clamp(2.25rem,4.5vw,4.5rem); }
+.company-line h2 { font-size:clamp(2.15rem,3.2vw,3.5rem); }
+.index-mast { padding-block:clamp(2.8rem,5vw,5.5rem); }
+.index-mast h1,.report-mast h1,.company-opening h1 { line-height:.94; }
+.index-mast h1 em,.portfolio-copy h2 em,.clinic-index h2 em { display:block; }
+.index-mast>p { max-width:38ch; }
+.portfolio-feature { background:var(--pale); grid-template-columns:1.2fr 1fr; }
+.portfolio-feature img { width:100%; height:clamp(23rem,36vw,37rem); object-fit:cover; object-position:50% 40%; }
+.portfolio-copy { padding:clamp(1.7rem,4.2vw,4.6rem); }
+.portfolio-copy h2 { font-size:clamp(2.7rem,4.6vw,5.3rem); }
+.index-stories { display:grid; grid-template-columns:1fr 1fr; gap:clamp(1.3rem,4vw,4.5rem); padding-block:clamp(2.7rem,5vw,5.5rem); }
+.index-stories img { width:100%; aspect-ratio:1.8; object-fit:cover; }
+.index-stories .folio-label { margin:1.1rem 0 .5rem; }
+.index-stories h2 { font-size:clamp(2.1rem,3.2vw,3.8rem); }
+.index-stories h2 a { text-decoration:none; }
+.index-stories h2 a:hover { text-decoration:underline; }
+.index-stories article>p:last-child { margin-top:.45rem; }
+.clinic-index>.wrap { padding-block:clamp(2.8rem,5vw,5.2rem); align-items:center; }
+.clinic-index .folio-label span { color:#d6d9d1; border-color:#778171; }
+.report-mast { padding-block:clamp(2.5rem,4.8vw,5rem); }
+.report-mast>.editor-link { margin-bottom:1.35rem; }
+.report-mast h1 { max-width:none; }
+.report-mast>p:not(.folio-label) { max-width:54ch; margin-top:1.25rem; }
+.jackson-report-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:clamp(1rem,3vw,3rem); padding-bottom:clamp(2rem,3vw,3rem); }
+.jackson-report-pair img { width:100%; aspect-ratio:1; object-fit:cover; }
+.jackson-report-pair figcaption { display:grid; gap:.3rem; margin-top:.9rem; max-width:46ch; font-size:1rem; }
+.jackson-report-pair figcaption>span { color:var(--accent); }
+.jackson-report-pair figcaption strong { font:600 clamp(1.9rem,2.5vw,3rem)/1.05 var(--display); color:var(--ink); }
+.jackson-detail { grid-column:1/-1; display:grid; grid-template-columns:1.1fr 1fr; align-items:center; gap:clamp(1.5rem,5vw,5rem); padding-top:1rem; }
+.jackson-detail img { aspect-ratio:1.5; }
+.report-tail { padding-block:1rem; border-top:1px solid var(--line); }
+.company-opening { display:grid; grid-template-columns:1fr .75fr; align-items:center; gap:clamp(2rem,7vw,8rem); padding-block:clamp(2.8rem,5vw,5.5rem); }
+.company-intro>p:not(.folio-label) { max-width:43ch; }
+.company-intro>p.company-deck { color:var(--ink); font-size:clamp(1.5rem,2.25vw,2.4rem); line-height:1.2; margin:1.3rem 0 1rem; }
+.company-portrait img { width:100%; max-height:37rem; object-fit:contain; }
+.crew-story { background:var(--pale); padding-block:clamp(2.8rem,5vw,5.25rem); }
+.crew-story img { width:100%; aspect-ratio:2.55; object-fit:cover; }
+.photo-dialog { background:#191d19; color:var(--paper); padding:.9rem clamp(.9rem,2vw,1.6rem) 1rem; border:1px solid #697065; width:min(74rem,calc(100% - 2rem)); max-width:100%; max-height:94dvh; overscroll-behavior:contain; }
+.photo-dialog::backdrop { background:#0a0d0bed; }
+.photo-dialog header,.viewer-actions,.viewer-tools { display:flex; align-items:center; gap:.65rem; }
+.photo-dialog header,.viewer-tools { justify-content:space-between; }
+.photo-dialog header p { color:white; font-weight:650; }
+.photo-dialog button,.viewer-original { color:white; background:transparent; border:1px solid #697366; padding:.35rem .75rem; min-height:44px; font-size:.94rem; }
+.viewer-original { display:inline-flex; align-items:center; text-decoration:none; }
+.photo-dialog button:hover,.viewer-original:hover { background:#384239; color:white; }
+.photo-dialog img { width:100%; height:min(62dvh,42rem); object-fit:contain; margin:.7rem 0; }
+.photo-dialog figcaption { color:#e0e5dc; font-size:1rem; }
+.viewer-tools { margin-top:.75rem; }
+@media(max-width:840px) {
+  .header-inner { min-height:4.35rem; }
+  .brand { width:6.35rem; }
+  .cover { min-height:29rem; }
+  .cover h1 { font-size:clamp(4.05rem,8.5vw,5.35rem); }
+}
+@media(max-width:680px) {
+  .cover { min-height:0; display:grid; grid-template-columns:1fr; }
+  .cover-image { position:relative; inset:auto; grid-area:1/1; width:100%; height:auto; aspect-ratio:1.55; object-fit:cover; object-position:50% 45%; }
+  .cover::before { inset:auto 0 0; height:calc(100% - 43vw); background:linear-gradient(to bottom,transparent,#e3e5df 28%,#e3e5df 100%); }
+  .cover-content { grid-area:2/1; margin-top:-1.35rem; padding-block:0 1.5rem; }
+  .cover h1 { font-size:clamp(3.45rem,12.3vw,5.3rem); margin:.2em 0 .12em; }
+  .cover h1 em { display:inline-block; font-size:.78em; }
+  .cover-caption { display:none; }
+  .spread-intro,.index-mast,.clinic-index>.wrap,.guide-grid,.home-jackson,.company-opening,.portfolio-feature,.jackson-detail { grid-template-columns:1fr; gap:1.45rem; }
+  .spread-intro { align-items:start; }
+  .photo-spread { grid-template-columns:1fr; gap:1.3rem; }
+  .guide-grid { gap:1.8rem; }
+  .jackson-photo img { height:auto; aspect-ratio:1.32; }
+  .company-line>.wrap { display:grid; justify-items:start; gap:.65rem; }
+  .index-stories,.jackson-report-pair { grid-template-columns:1fr; gap:2rem; }
+  .portfolio-feature { gap:0; }
+  .portfolio-feature img { height:auto; aspect-ratio:1.25; }
+  .company-portrait img { max-height:27rem; }
+  .crew-story img { aspect-ratio:1.8; }
+  .photo-dialog { width:calc(100% - 1rem); }
+  .photo-dialog img { height:min(46dvh,29rem); }
+  .viewer-tools { flex-wrap:wrap; gap:.5rem; }
+}
+@media(max-width:410px) {
+  .brand { width:clamp(4.35rem,21.5vw,5.5rem); }
+  .call-link::before { display:none; }
+}

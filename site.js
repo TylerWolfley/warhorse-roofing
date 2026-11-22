@@ -36,8 +36,10 @@ if (gallery) {
     gallery.append(figure);
   }
   if (gallery.childElementCount) {
-    document.querySelector("#projects").hidden = false;
-    document.querySelector("[data-gallery-link]").hidden = false;
+    const section = gallery.closest("[data-optional-projects]") || document.querySelector("#projects");
+    if (section) section.hidden = false;
+    const link = document.querySelector("[data-gallery-link]");
+    if (link) link.hidden = false;
   }
 }
 

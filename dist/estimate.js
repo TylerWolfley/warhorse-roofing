@@ -71,7 +71,9 @@
     if (!request) return;
     clearFeedback();
     if (!direct) {
-      status.textContent = "Send the draft from your email app. If it didn’t open, copy your request or use the online quote form below.";
+      emailFallback.href = request.email;
+      emailFallback.hidden = false;
+      status.textContent = "Send the draft from your email app. If it didn’t open, use the email link or copy your request.";
       window.location.href = request.email;
       return;
     }

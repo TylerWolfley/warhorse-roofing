@@ -2,7 +2,7 @@
 window.warhorse = {
   phone: "307-438-1030",
   email: "wade.lebeau@warhorse-roofing.com",
-  serviceArea: "Wyoming from Fort Washakie",
+  serviceArea: "Wyoming from Fremont County",
   // Paths for project photos are relative to the homepage.
   projects: []
 };

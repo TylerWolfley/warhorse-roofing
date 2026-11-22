@@ -93,10 +93,24 @@ async function contact(page){
   const draft=new URL(await form.locator('#assessment-email-fallback').getAttribute('href'));
   assert.equal(draft.protocol,'mailto:');assert.equal(draft.pathname,recipient);
   for(const v of ['123 QA Example','Coating near the curb','QA Example Owner','555-0100']) assert((draft.searchParams.get('body')||'').includes(v));
+  // Exercise both platform clipboard results without opening a browser permission prompt.
+  await form.evaluate(el=>{
+    Object.defineProperty(navigator,'clipboard',{configurable:true,value:{
+      writeText:async value=>{el.dataset.qacopy=value;}
+    }});
+  });
+  await form.locator('#copy-request').click();
+  await form.locator('#estimate-status').filter({hasText:/copied/i}).waitFor();
+  assert((await form.getAttribute('data-qacopy')).includes('555-0100'));
+  await form.evaluate(()=>{
+    Object.defineProperty(navigator,'clipboard',{configurable:true,value:{
+      writeText:async()=>{throw Error('Simulated unavailable clipboard');}
+    }});
+  });
   await form.locator('#copy-request').click();
   const manual=form.locator('#copy-fallback');
-  if(await manual.isVisible()) assert((await manual.inputValue()).includes('555-0100'));
-  else assert.match(await form.locator('#estimate-status').innerText(),/copied/i);
+  await manual.waitFor({state:'visible'});
+  assert((await manual.inputValue()).includes('555-0100'));
 }
 async function noScript(browser,errors){
   const ctx=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});await localRoutes(ctx,errors);

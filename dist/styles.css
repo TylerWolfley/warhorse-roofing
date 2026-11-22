@@ -351,4 +351,63 @@ figcaption {font-size:.94rem;color:var(--muted);line-height:1.5}
   .svc-sequence-toolbar { justify-content: flex-start; }
 }
 
-.assessment-layout,.assessment-next {display:grid;grid-template-columns:minmax(0,.88fr) minmax(0,1.12fr);gap:clamp(1.6rem,5vw,5rem);align-items:start;padding-block:clamp(2.6rem,6vw,5rem)} .assessment-intro .lead {margin:1rem 0}.assessment-direct {display:grid;justify-items:start;gap:.25rem;margin-top:2rem;padding-top:1.2rem;border-top:1px solid var(--line)}.assessment-direct h2 {font-size:1.2rem}.assessment-phone {font-size:1.7rem;font-weight:700}.assessment-direct a {overflow-wrap:anywhere;max-width:100%}.assessment-panel {border:1px solid var(--line);border-top:4px solid var(--rust);padding:clamp(1.2rem,3vw,2.6rem);border-radius:.35rem}.assessment-panel h2 {font-size:2rem}.assessment-panel form {margin-top:1rem}.assessment-panel label {display:block;font-weight:700;margin:1rem 0 .3rem}.assessment-panel input,.assessment-panel textarea {width:100%;padding:.65rem;border:1px solid #829397;border-radius:.25rem;font:inherit}.assessment-panel textarea {resize:vertical}.assessment-actions {display:flex;align-items:center;flex-wrap:wrap;gap:.6rem;margin-top:1rem}.assessment-panel .text-link {overflow-wrap:anywhere}.assessment-next h2 {margin:0}.assessment-panel #estimate-status:not(:empty) {margin-top:.7rem}@media(max-width:760px){.assessment-layout,.assessment-next{grid-template-columns:1fr}.assessment-direct{margin-top:1rem}}
+.assessment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+  gap: clamp(2rem, 6vw, 6rem);
+  align-items: start;
+  padding-block: clamp(2.5rem, 5.5vw, 5.5rem);
+}
+.assessment-intro h1 { margin: .55rem 0 1.2rem; max-width: 13ch; }
+.assessment-intro .lead { max-width: 43ch; }
+.assessment-direct {
+  display: grid;
+  gap: .25rem;
+  justify-items: start;
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+}
+.assessment-direct h2 { margin: 0 0 .25rem; font-size: 1.1rem; }
+.assessment-phone { color: var(--navy); font-size: clamp(1.55rem, 2.5vw, 2rem); font-weight: 700; }
+.assessment-email { color: var(--muted); overflow-wrap: anywhere; }
+.assessment-panel {
+  min-width: 0;
+  padding: clamp(1.2rem, 3.5vw, 2.6rem);
+  border: 1px solid var(--line);
+  border-top: 4px solid var(--rust);
+  background: white;
+}
+.assessment-panel h2 { margin: 0 0 .45rem; font-size: clamp(1.5rem, 2.5vw, 2rem); }
+#assessment-help { margin: 0 0 1.45rem; color: var(--muted); }
+.assessment-panel [hidden] { display: none; }
+.estimate-form { scroll-margin-top: 7rem; }
+.assessment-field { display: grid; gap: .35rem; min-width: 0; margin-bottom: 1rem; }
+.assessment-field label { font-weight: 650; color: var(--ink); }
+.assessment-panel input, .assessment-panel textarea {
+  display: block; box-sizing: border-box;
+  width: 100%; min-width: 0; min-height: 2.9rem; padding: .65rem .75rem;
+  border: 1px solid #83939b; border-radius: .25rem;
+  color: var(--ink); background: white; font: inherit;
+}
+.assessment-panel textarea { resize: vertical; line-height: 1.45; }
+.assessment-contact-fields { display: grid; gap: 0 .9rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.assessment-actions { display: flex; align-items: center; flex-wrap: wrap; gap: .6rem 1.2rem; }
+.assessment-actions button { min-height: 2.75rem; cursor: pointer; }
+.assessment-actions button:disabled { cursor: wait; opacity: .7; }
+.assessment-link { border: 0; background: transparent; color: var(--navy); font: inherit; font-weight: 650; padding: .35rem 0; text-decoration: underline; text-underline-offset: .2em; }
+#estimate-status { line-height: 1.45; margin: .85rem 0 0; }
+#estimate-status:empty { margin: 0; }
+#copy-fallback { margin-top: .7rem; }
+.assessment-web { padding-top: 1rem; border-top: 1px solid var(--line); margin: 1.3rem 0 0; }
+.assessment-next { display: grid; grid-template-columns: 1fr 1.5fr; gap: 1.5rem; padding-block: clamp(2rem, 4vw, 4rem); }
+.assessment-next h2, .assessment-next p { margin: 0; }
+@media (max-width: 780px) {
+  .assessment-layout, .assessment-next { grid-template-columns: 1fr; }
+  .assessment-layout { gap: 1.8rem; }
+  .assessment-intro h1 { max-width: 17ch; }
+  .assessment-direct { margin-top: 1.25rem; padding-top: 1rem; }
+}
+@media (max-width: 480px) {
+  .assessment-contact-fields { grid-template-columns: 1fr; }
+}

@@ -1,0 +1,47 @@
+name: Check the public Warhorse Roofing release
+on:
+  push:
+    branches: [qa/warhorse-brand-20261122]
+permissions:
+  contents: read
+jobs:
+  public-site:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Compare the public pages and brand assets with the release
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          from urllib.request import Request, urlopen
+          from urllib.error import URLError
+          from concurrent.futures import ThreadPoolExecutor
+          import os, time
+          root = Path('dist')
+          resources = sorted(root.rglob('*.html')) + [root / p for p in (
+              'styles.css', 'site.js', 'estimate.js', 'assets/fonts/barlow-condensed-semibold.ttf',
+              'assets/fonts/dm-sans.woff2', 'assets/crew-metal-panels.webp', 'assets/war-horse-roofing-logo.png')]
+          def verify(path):
+              name = path.relative_to(root).as_posix()
+              route = name.removesuffix('index.html')
+              url = 'https://warhorse-roofing.com/' + route + '?release=' + os.environ['GITHUB_SHA'][:12]
+              request = Request(url, headers={'User-Agent':'WarhorseRoofingReleaseCheck/1.0', 'Cache-Control':'no-cache'})
+              with urlopen(request, timeout=12) as res:
+                  if res.status != 200 or res.read() != path.read_bytes():
+                      raise ValueError('Waiting for ' + name)
+          for attempt in range(17):
+              try:
+                  with ThreadPoolExecutor(max_workers=6) as pool:
+                      list(pool.map(verify, resources))
+                  print(f'Public HTTPS content matched all {len(resources)} release files, including all nine pages.')
+                  break
+              except (URLError, ValueError, OSError) as problem:
+                  if attempt == 16:
+                      raise
+                  print(problem, flush=True)
+                  time.sleep(6)
+          PY

@@ -1,13 +1,14 @@
 (() => {
   const form = document.getElementById("estimate-request");
-  const emailLink = document.getElementById("wade-email");
+  const emailLink = document.getElementById("company-email");
   if (!form || !emailLink) return;
 
-  const recipient = emailLink.href.slice("mailto:".length);
+  const recipient = window.warhorse?.email || emailLink.href.slice("mailto:".length);
+  emailLink.href = "mailto:" + recipient;
   const status = document.getElementById("estimate-status");
   const copyArea = document.getElementById("copy-fallback");
-  const emailFallback = document.getElementById("assessment-email-fallback");
-  const submitButton = document.getElementById("assessment-submit");
+  const emailFallback = document.getElementById("quote-email-fallback");
+  const submitButton = document.getElementById("quote-submit");
   const copyButton = document.getElementById("copy-request");
   const endpoint = window.warhorse?.assessmentEndpoint || "";
   const direct = /^https:\/\/formspree\.io\/f\/[a-z0-9]+\/?$/i.test(endpoint);
@@ -21,11 +22,11 @@
     for (const field of ["name", "contact", "location", "message"]) {
       data.set(field, data.get(field).trim());
     }
-    const subject = "Commercial roof assessment: " + data.get("location");
+    const subject = "Commercial roofing quote: " + data.get("location");
     const message = [
-      "Hi Wade,",
+      "Hello Warhorse Roofing,",
       "",
-      "I'd like a roof assessment for " + data.get("location") + ".",
+      "I'd like a roof quote for " + data.get("location") + ".",
       data.get("message"),
       "",
       data.get("name"),
@@ -53,14 +54,14 @@
     const text = "To: " + recipient + "\nSubject: " + request.subject + "\n\n" + request.message;
     try {
       await navigator.clipboard.writeText(text);
-      status.textContent = "Request copied. Paste it into a message to Wade.";
+      status.textContent = "Request copied. Paste it into your email.";
       copyArea.hidden = true;
     } catch {
       copyArea.value = text;
       copyArea.hidden = false;
       copyArea.focus();
       copyArea.select();
-      status.textContent = "Copy the selected request, then send it to Wade.";
+      status.textContent = "Copy the selected text into your email.";
     }
   });
 
@@ -73,7 +74,7 @@
     if (!direct) {
       emailFallback.href = request.email;
       emailFallback.hidden = false;
-      status.textContent = "Send the draft from your email app. If it didn’t open, use the email link or copy your request.";
+      status.textContent = "Send the draft from your email app. You can also copy your request.";
       window.location.href = request.email;
       return;
     }
@@ -98,11 +99,11 @@
       });
       if (!response.ok) throw new Error("Request was not accepted");
       form.reset();
-      status.textContent = "Your roof assessment request was submitted. Wade can follow up using the contact details you provided.";
+      status.textContent = "We received your quote request. We’ll use the contact details you provided to follow up.";
     } catch {
       emailFallback.href = request.email;
       emailFallback.hidden = false;
-      status.textContent = "We couldn’t confirm your submission. You can email these details to Wade or call him directly.";
+      status.textContent = "We couldn’t confirm delivery. Email your request or call us.";
     } finally {
       window.clearTimeout(timeout);
       for (const field of requestFields) field.readOnly = false;
@@ -111,9 +112,14 @@
     }
   });
 
+  const alternate = document.getElementById("email-option");
   if (direct) {
-    document.getElementById("assessment-help").textContent = "Send the building location, your roof concern, and the best way for Wade to reach you.";
-    submitButton.textContent = "Send assessment request";
+    document.getElementById("online-quote").hidden = true;
+    document.getElementById("quote-help").textContent = "Send your building location, the problem, and the best way to reach you.";
+    submitButton.textContent = "Request a quote";
+    alternate.open = true;
+    alternate.querySelector("summary").hidden = true;
+    alternate.classList.add("quote-direct");
   }
-  form.hidden = false;
+  alternate.hidden = false;
 })();

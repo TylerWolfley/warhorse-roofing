@@ -112,14 +112,10 @@
     }
   });
 
-  const alternate = document.getElementById("email-option");
   if (direct) {
     document.getElementById("online-quote").hidden = true;
-    document.getElementById("quote-help").textContent = "Send your building location, the problem, and the best way to reach you.";
+    document.getElementById("quote-help").textContent = "We’ll use your contact details to follow up about the building.";
     submitButton.textContent = "Request a quote";
-    alternate.open = true;
-    alternate.querySelector("summary").hidden = true;
-    alternate.classList.add("quote-direct");
   }
-  alternate.hidden = false;
+  copyButton.hidden = false;
 })();

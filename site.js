@@ -7,12 +7,10 @@ if (phone && config.phone) {
   const digits = config.phone.replace(/[^0-9+]/g, "");
   if (digits) {
     phone.href = "tel:" + (/^\d{10}$/.test(digits) ? "+1" + digits : digits);
-    phone.textContent = config.phone;
   }
 }
 if (email && config.email) {
   email.href = "mailto:" + config.email;
-  email.textContent = config.email;
 }
 if (serviceArea && config.serviceArea) {
   serviceArea.textContent = "Serving " + config.serviceArea;
@@ -58,7 +56,7 @@ if (location.protocol === "file:") {
 const menuToggle = document.getElementById("menu-toggle");
 const mainNav = document.getElementById("primary-nav");
 if (menuToggle && mainNav) {
-  const smallScreen = window.matchMedia("(max-width: 720px)");
+  const smallScreen = window.matchMedia("(max-width: 840px)");
   function setMenu(open) {
     mainNav.classList.toggle("open", open);
     menuToggle.setAttribute("aria-expanded", String(open));

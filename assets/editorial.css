@@ -22,7 +22,7 @@
 .call-link { text-decoration:none; }
 .call-link::before { content:""; display:block; width:1rem; height:1rem; margin-right:.45rem; background:currentColor; mask:url("phone.svg") center/contain no-repeat; }
 .back-link::before { content:none; }
-.folio-label,.cover-brand,.photo-tab,.jackson-report-pair figcaption>span { font-size:.78rem; line-height:1.5; font-weight:700; text-transform:uppercase; letter-spacing:.09em; }
+.folio-label,.cover-brand,.cover-caption,.photo-tab,.jackson-report-pair figcaption>span { font-size:.78rem; line-height:1.5; font-weight:700; text-transform:uppercase; letter-spacing:.09em; }
 .folio-label { color:var(--accent); display:flex; flex-wrap:wrap; align-items:center; gap:.3rem .85rem; margin-bottom:.8rem; }
 .folio-label span { color:var(--muted); font-weight:550; letter-spacing:.05em; border-left:1px solid var(--line); padding-left:.85rem; }
 .edition-home em,.company-page em,.portfolio-index em,.jackson-report em { font:italic 400 1.04em/.99 var(--serif); letter-spacing:-.035em; }
@@ -30,8 +30,7 @@
 .editor-link { text-decoration-color:var(--accent); }
 .editor-link:hover,.inverse-link:hover,.cover-link:hover { text-decoration-thickness:2px; }
 .cover { position:relative; isolation:isolate; display:flex; align-items:center; min-height:clamp(31rem,42vw,46rem); color:#1f2420; background:#e3e5df; overflow:hidden; }
-.cover-picture { position:absolute; z-index:-3; inset:0 0 0 auto; width:82%; }
-.cover-image { display:block; width:100%; height:100%; max-width:none; object-fit:cover; object-position:75% 60%; }
+.cover-image { position:absolute; z-index:-3; inset:0 0 0 auto; width:82%; height:100%; max-width:none; object-fit:cover; object-position:60% 0%; }
 .cover::before { content:""; position:absolute; z-index:-2; inset:0; pointer-events:none; background:linear-gradient(90deg,#e3e5df 0%,rgba(227,229,223,.98) 18%,rgba(227,229,223,.87) 28%,rgba(229,230,225,.52) 43%,rgba(230,231,226,0) 61%); }
 .cover-content { padding-block:clamp(3.2rem,6vw,6.3rem); }
 .cover-brand { display:flex; align-items:center; gap:.75rem; color:#363b34; }
@@ -39,6 +38,8 @@
 .cover h1 { font-size:clamp(4.75rem,7.7vw,8.65rem); line-height:.88; letter-spacing:-.04em; margin:.26em 0 .29em; text-wrap:initial; max-width:none; }
 .cover h1 em { display:block; color:#682637; font-size:.87em; line-height:1.04; }
 .cover-link { color:#1f2420; text-decoration-color:#783d49; }
+.cover-caption { position:absolute; right:max(4%,calc((100% - 88rem)/2)); bottom:1.35rem; padding:.55rem .8rem; background:#222822e8; color:white; }
+.cover-caption span { display:block; font-size:.82rem; color:#e7e9e3; text-transform:none; letter-spacing:0; }
 .portfolio-lead,.field-plates { padding-block:clamp(3.2rem,6.5vw,6.8rem); }
 .spread-intro,.index-mast,.clinic-index>.wrap { display:grid; grid-template-columns:minmax(0,1.18fr) minmax(0,.65fr); align-items:end; gap:clamp(2rem,8vw,9rem); }
 .spread-intro { margin-bottom:clamp(1.4rem,3vw,3rem); }
@@ -125,12 +126,12 @@
 }
 @media(max-width:680px) {
   .cover { min-height:0; display:grid; grid-template-columns:1fr; }
-  .cover-picture { position:relative; inset:auto; grid-area:1/1; width:100%; }
-  .cover-image { height:auto; aspect-ratio:195/127; object-position:center; }
-  .cover::before { display:none; }
-  .cover-content { grid-area:2/1; margin-top:0; padding-block:1.2rem 1.5rem; }
+  .cover-image { position:relative; inset:auto; grid-area:1/1; width:100%; height:auto; aspect-ratio:1.55; object-fit:cover; object-position:50% 45%; }
+  .cover::before { inset:auto 0 0; height:calc(100% - 43vw); background:linear-gradient(to bottom,transparent,#e3e5df 28%,#e3e5df 100%); }
+  .cover-content { grid-area:2/1; margin-top:-1.35rem; padding-block:0 1.5rem; }
   .cover h1 { font-size:clamp(3.45rem,12.3vw,5.3rem); margin:.2em 0 .12em; }
   .cover h1 em { display:inline-block; font-size:.78em; }
+  .cover-caption { display:none; }
   .spread-intro,.index-mast,.clinic-index>.wrap,.guide-grid,.home-jackson,.company-opening,.portfolio-feature,.jackson-detail { grid-template-columns:1fr; gap:1.45rem; }
   .spread-intro { align-items:start; }
   .photo-spread { grid-template-columns:1fr; gap:1.3rem; }

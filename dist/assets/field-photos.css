@@ -1,0 +1,73 @@
+.field-photo a {
+  display: block;
+  cursor: zoom-in;
+}
+.field-photo img {
+  width: 100%;
+  height: auto;
+}
+.field-photo figcaption {
+  margin-top: .6rem;
+  color: var(--muted);
+  font-size: .94rem;
+  line-height: 1.5;
+}
+.field-pair, .field-trio {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.25rem, 2.5vw, 2.8rem);
+}
+.field-system-photos {
+  border-top: 1px solid var(--line);
+  padding-top: clamp(1.25rem, 2.5vw, 2.75rem);
+}
+.field-company {
+  grid-template-columns: minmax(0, .84fr) minmax(0, 1.16fr);
+}
+.field-owner {
+  background: #262a25;
+  color: var(--paper);
+}
+.field-owner-inner, .field-spray {
+  display: grid;
+  align-items: center;
+  gap: clamp(2rem, 6vw, 6.5rem);
+  padding-block: clamp(2.8rem, 5.5vw, 6rem);
+}
+.field-owner-inner {
+  grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
+  grid-template-areas: "photo copy";
+}
+.field-owner-copy { grid-area: copy; }
+.field-owner-inner .field-photo { grid-area: photo; }
+.field-owner h2, .field-prep h2, .field-spray h2, .field-finishes h2 {
+  font-size: clamp(2.8rem, 4.7vw, 5.2rem);
+  line-height: .97;
+}
+.field-owner-copy p, .field-spray-copy p {
+  margin-top: 1.25rem;
+  max-width: 39ch;
+  font-size: clamp(1rem, 1.35vw, 1.22rem);
+}
+.field-owner-copy p { color: #e2e5df; }
+.field-prep {
+  background: var(--pale);
+  padding-block: clamp(2.75rem, 5vw, 5.5rem);
+}
+.field-prep h2, .field-finishes h2 { margin-bottom: clamp(1.3rem, 2.8vw, 2.8rem); }
+.field-spray { grid-template-columns: minmax(0, .62fr) minmax(0, 1.2fr); }
+.field-spray h2 em { display: block; }
+.field-finishes {
+  padding-block: clamp(2.25rem, 4.5vw, 4.5rem);
+  border-top: 1px solid var(--line);
+}
+.field-trio { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.field-trio img { aspect-ratio: 4/3; object-fit: cover; }
+@media (max-width: 680px) {
+  .field-company, .field-owner-inner, .field-spray, .field-pair, .field-trio {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .field-owner-inner { grid-template-areas: "copy" "photo"; }
+  .field-spray h2 em { display: inline; }
+}

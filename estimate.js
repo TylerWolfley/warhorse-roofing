@@ -113,7 +113,6 @@
   });
 
   if (direct) {
-    document.getElementById("online-quote").hidden = true;
     document.getElementById("quote-help").textContent = "We’ll use your contact details to follow up about the building.";
     submitButton.textContent = "Request a quote";
   }

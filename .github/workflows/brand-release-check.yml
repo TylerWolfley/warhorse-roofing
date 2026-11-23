@@ -23,8 +23,8 @@ jobs:
           import os, time
           root = Path('dist')
           resources = sorted(root.rglob('*.html')) + [root / p for p in (
-              'styles.css', 'site.js', 'estimate.js', 'assets/fonts/barlow-condensed-semibold.ttf',
-              'assets/fonts/dm-sans.woff2', 'assets/crew-metal-panels.webp', 'assets/war-horse-roofing-logo.png')]
+              'styles.css', 'assets/editorial.css', 'estimate.js', 'assets/fonts/barlow-condensed-semibold.ttf',
+              'assets/fonts/dm-sans.woff2', 'assets/crew-metal-panels.webp', 'assets/roof-preparation-detail.webp', 'assets/war-horse-roofing-logo.png')]
           def verify(path):
               name = path.relative_to(root).as_posix()
               route = name.removesuffix('index.html')

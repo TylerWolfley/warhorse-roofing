@@ -151,3 +151,19 @@
   .brand { width:clamp(4.35rem,21.5vw,5.5rem); }
   .call-link::before { display:none; }
 }
+
+.cover-deck { max-width: 35ch; font-size: clamp(1rem, 1.35vw, 1.23rem); line-height: 1.45; margin: -.2rem 0 .7rem; }
+.service-metal { display: grid; grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr); align-items: center; gap: clamp(2.4rem, 7vw, 7.5rem); padding-block: clamp(3rem, 6vw, 6rem); }
+.service-metal p { max-width: 46ch; margin-top: 1rem; }
+.service-metal .field-photo img { width: 100%; aspect-ratio: 1.65; object-fit: cover; }
+.service-work { border-top: 1px solid var(--line); }
+.work-details, .roof-layers { margin-top: 1.5rem; border-top: 1px solid var(--line); }
+.work-details summary, .roof-layers summary { width: fit-content; min-height: 44px; padding-block: .85rem; font-weight: 650; cursor: pointer; }
+.work-details summary::marker, .roof-layers summary::marker { color: var(--accent); }
+.work-details[open] summary, .roof-layers[open] summary { margin-bottom: .5rem; }
+.layer-example { display: grid; grid-template-columns: minmax(0,.7fr) minmax(0,1.3fr); align-items: center; gap: 2rem; padding: clamp(1rem, 3vw, 3rem); background: #242826; color: #f5f5ef; }
+.layer-example p { max-width: 36ch; }
+@media (max-width: 680px) {
+  .service-metal, .layer-example { grid-template-columns: 1fr; gap: 1.4rem; }
+  .cover-deck { margin: .7rem 0 .35rem; }
+}

@@ -11,7 +11,7 @@ Run `python -m http.server 8000 --bind 127.0.0.1 --directory dist` from the repo
 | `/` | Warhorse Roofing, restoration systems, and Riverton before-and-after photos |
 | `/services/` | Roof systems, an interactive photo sequence, roof inspections, and warranty questions |
 | `/projects/` | Full-size job photos and four anonymized project stories |
-| `/service-area/` | Interactive Wyoming project map and coverage |
+| `/service-area/` | Statewide coverage, Wyoming roofing projects, and roof visits |
 | `/about/` | Company history and crew photography |
 | `/contact/` | On-domain quote details, email draft, and phone |
 

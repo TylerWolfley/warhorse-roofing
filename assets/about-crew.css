@@ -1,0 +1,52 @@
+/* About the company and crew */
+.people-page { --people-space: clamp(2.6rem, 5.6vw, 5.75rem); }
+.people-page h1, .people-page h2 { letter-spacing: -.035em; }
+.people-page h2 { font-size: clamp(3rem, 5.1vw, 5.4rem); line-height: .98; }
+.people-page em { font: italic 400 1.06em/.92 var(--serif); letter-spacing: -.035em; }
+.people-page figure a { display: block; cursor: zoom-in; }
+.people-page figure img { width: 100%; height: auto; }
+.people-page figcaption { font-size: .9rem; line-height: 1.5; padding-top: .62rem; }
+.people-page p { line-height: 1.57; }
+.people-intro { background: #252b28; color: #faf9f4; }
+.people-intro-inner {
+  display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr);
+  align-items: center; gap: clamp(2.5rem,6vw,6.5rem);
+  padding-block: clamp(2rem,3.65vw,3.8rem);
+}
+.people-intro-copy { padding-bottom: 1rem; }
+.people-intro h1 { font-size: clamp(3.7rem,7vw,7.4rem); line-height: .94; max-width: 13ch; }
+.people-intro h1 em { display: block; color: #e2c5af; }
+.people-intro-copy p { color: #e0e2da; margin-top: clamp(1.2rem,2vw,1.95rem); font-size: clamp(1.05rem,1.35vw,1.25rem); max-width: 39ch; }
+.people-owner-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: .9rem; font-weight: 650; text-underline-offset: .32em; text-decoration-color: #d3bda9; }
+.people-intro a:hover { color: #f0d1b4; }
+.people-intro a:focus-visible { outline-color: #f0d1b4; }
+.people-group figcaption { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .15rem 1rem; color: #edeee7; }
+.people-group figcaption span + span { color: #c3cbc1; }
+.people-founder {
+  display: grid; grid-template-columns: minmax(0,.95fr) minmax(0,1fr);
+  grid-template-areas: "photo copy"; align-items: center;
+  gap: clamp(2.5rem,7vw,7rem); padding-block: var(--people-space);
+}
+.people-founder-copy { grid-area: copy; }
+.people-role { color: var(--accent); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .81rem; margin: 0 0 .7rem; }
+.people-founder-copy h2 + p, .people-field-copy h2 + p { margin-top: 1.15rem; }
+.people-founder-copy p:not(.people-role), .people-field-copy p { max-width: 46ch; font-size: clamp(1.02rem,1.25vw,1.16rem); }
+.people-portrait { grid-area: photo; }
+.people-field { background: #efeee8; border-top: 1px solid var(--line); }
+.people-field-inner { display: grid; grid-template-columns: minmax(0,.76fr) minmax(0,1.24fr); gap: clamp(2rem,5vw,6rem); align-items: center; padding-block: var(--people-space); }
+.people-field h2 { font-size: clamp(2.6rem,4.5vw,4.6rem); }
+.people-field h2 em { display: block; color: var(--accent); }
+.people-field-copy a { margin-top: .5rem; }
+.people-field-photo figcaption span { margin: 0 .25rem; }
+@media (max-width: 740px) {
+  .people-intro-inner, .people-founder, .people-field-inner { grid-template-columns: minmax(0,1fr); gap: 1.4rem; }
+  .people-intro-inner { padding-block: 2.1rem 1.65rem; }
+  .people-intro-copy { padding-bottom: 0; }
+  .people-intro h1 { font-size: clamp(3.25rem,10.4vw,4.85rem); max-width: none; }
+  .people-intro h1 em { display: inline; }
+  .people-intro-copy p { margin-top: .9rem; max-width: 55ch; }
+  .people-owner-link { margin-top: .3rem; }
+  .people-founder { grid-template-areas: "copy" "photo"; }
+  .people-founder-copy p:not(.people-role), .people-field-copy p { max-width: 58ch; }
+  .people-field h2 em { display: inline; }
+}
